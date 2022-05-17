@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Front Desk App</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a asp-controller="Customer" asp-action="CheckIn">Check In</a></li>
+                <li><a asp-controller="Customer" asp-action="ListCustomerStorage">All Customer Storage</a></li>
+                <li><a asp-controller="Storage" asp-action="CheckAvailableStorage">Check Available Storage</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/bootstrap//js/bootstrap.js"></script>
+
+    @RenderSection("scripts", false)
+</body>
+</html> 

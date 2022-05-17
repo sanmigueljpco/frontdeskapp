@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CustomerStorage>
+
+@{
+    ViewData["Title"] = "ListCustomerStorage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListCustomerStorage</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Phone</th>
+            <th>Package</th>
+            <th>In</th>
+            <th>Out</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.Customer.Firtname</td>
+            <td>@item.Customer.Lastname</td>
+            <td>@item.Customer.Phone</td>
+
+            @switch (item.Storage.StorageTypeId)
+            {
+                case 1:
+                    <td>Small</td>
+                    break;
+                case 2:
+                    <td>Medium</td>
+                    break;
+                case 3:
+                    <td>Large</td>
+                    break;
+            }
+
+            <td>@item.In</td>
+            <td>@item.Out</td>
+
+            @if (item.Out == null)
+            {
+            <td>
+                <form asp-action="ClaimPackage" method="post">
+                    <input type="hidden" name="id" value="@item.CustomerStorageId" />
+                    <input type="submit" value="Claim" class="btn btn-primary" />
+                </form>
+            </td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>

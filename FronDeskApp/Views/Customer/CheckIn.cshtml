@@ -1,0 +1,46 @@
+﻿@model CheckInViewModel
+
+@{
+    ViewData["Title"] = "CheckIn";
+}
+
+<h2>CheckIn</h2>
+
+<form asp-action="CheckIn" method="post" class="form-horizontal" role="form">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Firstname" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="Firstname" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Lastname" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="Lastname" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Phone" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="Phone" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="StorageTypeId" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <select asp-for="StorageTypeId" asp-items="@Model.StorageTypes">
+                <option>Please select one</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-5 col-md-offset-2">
+            <input type="submit" class="btn btn-primary" value="Submit" />
+        </div>
+    </div>
+</form>
+
+

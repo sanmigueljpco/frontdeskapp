@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "CheckAvailableStorage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CheckAvailableStorage</h2>
+
+<ul>
+    <li>Small: <span id="count-small"></span></li>
+    <li>Medium: <span id="count-medium"></span></li>
+    <li>Large: <span id="count-large"></span></li>
+</ul>
+
+@section scripts {
+
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $.ajax({
+                type: "GET",
+                url: "/Storage/GetAvailableStorage",
+                success: function (response) {
+                    $("#count-small").text(response.Small);
+                    $("#count-medium").text(response.Medium);
+                    $("#count-large").text(response.Large);
+                }
+            });
+        });
+    </script>
+    }
+
